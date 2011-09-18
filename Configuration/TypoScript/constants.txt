@@ -1,0 +1,6 @@
+plugin.tx_paginate {
+    view {
+         # cat=plugin.tx_paginate/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:paginate/Resources/Private/Templates/
+    }
+}

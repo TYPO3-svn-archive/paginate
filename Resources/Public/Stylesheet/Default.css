@@ -1,0 +1,32 @@
+div.paginator-wrap {
+}
+
+ul.paginator {
+	margin:0 auto 0 auto;
+	width:50%;
+	text-align:center;
+	list-style:none;
+	height:30px;
+}
+ul.paginator > li {
+	float:left;
+	background:none;
+}
+
+ul.paginator li.first {
+}
+
+ul.paginator li.last {
+}
+
+ul.paginator li.previous {
+	width:50px;
+}
+
+ul.paginator li.next {
+        width:50px;
+}
+
+ul.paginator li.current {
+	color:#f00;
+}
