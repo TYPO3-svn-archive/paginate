@@ -33,7 +33,7 @@
 	 *     <f:for each="{paginatedObjects}" as="object">
 	 *       ...
 	 *     </f:for>
-	 *   </spb:widget.paginate>
+	 *   </p:widget.paginate>
 	 *
 	 */
 	class Tx_Paginate_ViewHelpers_Widget_PaginateViewHelper extends Tx_Fluid_ViewHelpers_Widget_PaginateViewHelper {
