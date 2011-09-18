@@ -1,1 +1,8 @@
 page.includeCSS.tx_paginate= EXT:paginate/Resources/Public/Stylesheet/Default.css
+
+plugin.tx_paginate {
+    view {
+         # cat=plugin.tx_paginate/file; type=string; label=Path to template root (FE)
+        templateRootPath = {$plugin.tx_paginate.view.templateRootPath}
+    }
+}
