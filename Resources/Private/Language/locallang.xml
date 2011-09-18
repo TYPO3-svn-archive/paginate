@@ -6,8 +6,8 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="previous">Previous</label>
-			<label index="next">Next</label>
+			<label index="previous">&lt;</label>
+			<label index="next">&gt;</label>
 		</languageKey>
 	</data>
 </T3locallang>
