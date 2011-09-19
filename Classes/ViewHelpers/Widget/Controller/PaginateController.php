@@ -62,5 +62,35 @@
 			return $pagination;
 		}
 
+		/**
+		 * Allows the widget template root path to be overriden via the framework configuration,
+		 * e.g. plugin.tx_extension.view.widget.<WidgetViewHelperClassName>.templateRootPath
+		 *
+		 * This implementation was suggested in the ticket below, but was not yet
+		 * integrated in the Extbase core.
+		 *
+		 * @todo remove, override or modify this method as soon as this feature is in extbase
+		 * @param Tx_Extbase_MVC_View_ViewInterface $view
+		 * @see Classes/Core/Widget/Tx_Fluid_Core_Widget_AbstractWidgetController::setViewConfiguration()
+		 * @see http://forge.typo3.org/issues/10823
+		 */
+		protected function setViewConfiguration(Tx_Extbase_MVC_View_ViewInterface $view) {
+			$extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+			$widgetViewHelperClassName = $this->request->getWidgetContext()->getWidgetViewHelperClassName();
+
+			if (isset($extbaseFrameworkConfiguration['view']['widget'][$widgetViewHelperClassName]['templateRootPath'])
+					&& strlen($extbaseFrameworkConfiguration['view']['widget'][$widgetViewHelperClassName]['templateRootPath']) > 0
+					&& method_exists($view, 'setTemplateRootPath')) {
+
+				if($this->widgetConfiguration->hasArgument('templateFilePath')) {
+					$view->setTemplatePathAndFilename(t3lib_div::getFileAbsFileName($extbaseFrameworkConfiguration['view']['widget'][$widgetViewHelperClassName]['templateRootPath']).$this->widgetConfiguration['templateFilePath']);
+				} else {
+					$view->setTemplateRootPath(t3lib_div::getFileAbsFileName($extbaseFrameworkConfiguration['view']['widget'][$widgetViewHelperClassName]['templateRootPath']));
+				}
+
+			} elseif($this->widgetConfiguration->hasArgument('templateFilePath')) {
+				$view->setTemplatePathAndFilename(t3lib_div::getFileAbsFileName($this->widgetConfiguration['templateFilePath']));
+			}
+		}
 	}
 ?>
